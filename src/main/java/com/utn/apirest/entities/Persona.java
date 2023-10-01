@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,17 +26,17 @@ public class Persona extends com.utn.apirest.entities.Base {
     @Column(name = "dni")
     private int dni;
 
-    /*
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_domicilio")
     private Domicilio domicilio;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable(
             name = "persona_libro",
             joinColumns = @JoinColumn(name = "persona_id"),
             inverseJoinColumns = @JoinColumn(name = "libro_id")
     )
-    private List<Libro> libros;
-     */
+    private List<Libro> libros = new ArrayList<Libro>();
+
 }
